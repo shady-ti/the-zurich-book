@@ -1,5 +1,6 @@
 // TODO: organize imports
 // TODO: Export names
+// TODO: Error on adding empty names
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -12,7 +13,7 @@ import 'ui/randomNameDisplay.ui.dart';
 import 'util/gen.util.dart';
 
 void main(List<String> args) async {
-  setupWindow(title: 'The Zurich Book', windowHeight: 1000, windowWidth: 750);
+  setupWindow(title: 'The Zurich Book', windowHeight: 1350, windowWidth: 750);
 
   await GetStorage.init('vault');
 
