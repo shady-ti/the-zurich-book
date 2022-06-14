@@ -39,7 +39,9 @@ class ContactsListDisplay extends StatelessWidget {
                       onPressed: () => popAlert(
                         context: context,
                         title: 'Edit Name',
-                        child: const AddEditNameDialog(),
+                        child: AddEditNameDialog(
+                          existingName: name,
+                        ),
                       ),
                       icon: Icon(
                         Icons.edit_rounded,
@@ -62,8 +64,7 @@ class ContactsListDisplay extends StatelessWidget {
               ),
             );
           },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Divider(),
+          separatorBuilder: (BuildContext context, int index) => const Divider(),
         );
       },
     );

@@ -13,17 +13,14 @@ import 'package:the_zurich_book/model/vault.model.dart';
 
 /// Contents of a dialogBox to be displayed when adding or editing names in the [Vault]
 ///
-class AddEditNameDialog extends StatefulWidget {
-  const AddEditNameDialog({Key? key}) : super(key: key);
+class AddEditNameDialog extends StatelessWidget {
+  final String? existingName;
 
-  @override
-  State<AddEditNameDialog> createState() => _AddEditNameDialogState();
-}
+  const AddEditNameDialog({Key? key, this.existingName}) : super(key: key);
 
-class _AddEditNameDialogState extends State<AddEditNameDialog> {
   @override
   Widget build(BuildContext context) {
-    var nameCheckController = TextEditingController();
+    var nameCheckController = TextEditingController(text: existingName);
 
     return Consumer<Vault>(
       builder: (context, vault, child) {
@@ -34,6 +31,7 @@ class _AddEditNameDialogState extends State<AddEditNameDialog> {
         void checkAndSubmit() {
           // Only add and exit if the text field is not empty
           if (nameCheckController.text.trim().isNotEmpty) {
+            if (existingName != null) vault.removeName(existingName!);
             vault.addName(nameCheckController.text);
             Navigator.pop(context);
           }
@@ -60,16 +58,14 @@ class _AddEditNameDialogState extends State<AddEditNameDialog> {
                   return 'NAME ALREADY EXISTS IN VAULT';
                 } else {
                   return names.firstWhere(
-                    (existingName) =>
-                        existingName.startsWith(nameToAdd.toUpperCase()),
+                    (existingName) => existingName.startsWith(nameToAdd.toUpperCase()),
                     orElse: () => 'NO MATCH, GOOD TO GO',
                   );
                 }
               },
               // change the validator output display color
               decoration: InputDecoration(
-                errorStyle:
-                    TextStyle(color: Theme.of(context).colorScheme.primary),
+                errorStyle: TextStyle(color: Theme.of(context).colorScheme.primary),
               ),
             ),
             // Action Buttons

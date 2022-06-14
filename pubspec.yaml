@@ -38,3 +38,10 @@ flutter_icons:
   # assets:
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg
+
+msix_config:
+  display_name: The Zurich Book
+  publisher_display_name: shadyTi
+  identity_name: github.shadyti.zurich-book
+  msix_version: 1.0.1.0
+  logo_path: .\assets\appIcon.ico
