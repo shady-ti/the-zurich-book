@@ -1,5 +1,10 @@
+// Dart imports:
 import 'dart:math';
+
+// Flutter imports:
 import 'package:flutter/foundation.dart';
+
+// Package imports:
 import 'package:get_storage/get_storage.dart';
 
 class ExistingNameException implements Exception {
@@ -43,7 +48,7 @@ class Vault extends ChangeNotifier {
     }
 
     if (_nameSet1.isEmpty && _nameSet2.isEmpty) {
-      _cName = 'Please head to the contacts page\nand add names first';
+      _cName = 'Please head to the contacts page and add names first';
     }
   }
 
@@ -72,7 +77,8 @@ class Vault extends ChangeNotifier {
 
   /// check if the vault contains a given name
   bool containsName(String name) =>
-      _nameSet1.contains(name.toUpperCase()) || _nameSet2.contains(name.toUpperCase());
+      _nameSet1.contains(name.toUpperCase()) ||
+      _nameSet2.contains(name.toUpperCase());
 
   /// remove a name from the vault
   ///

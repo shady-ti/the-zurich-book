@@ -1,0 +1,4 @@
+clear; flutter pub run import_sorter:main;
+clear; flutter clean; clear; flutter pub get; clear; flutter build web -v; clear; flutter build apk --split-per-abi -v; clear; flutter build windows -v; clear; flutter pub run msix:create; wsl;
+clear; flutter pub get; clear; flutter build linux -v; exit;
+clear; flutter pub get;
